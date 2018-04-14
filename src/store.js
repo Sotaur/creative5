@@ -8,12 +8,12 @@ export default new Vuex.Store({
     state: {
       tickets: [],
       user: {},
-      tags: [],
+      tags: new Set(),
     },
     getters: {
       tickets: state => state.tickets,
       user: state => state.user,
-      tags: state => state.tags,
+      tags: state => state.tags.values(),
     },
     mutations: {
       setTickets(state, tickets) {
@@ -23,7 +23,7 @@ export default new Vuex.Store({
         state.user = user;
       },
       setTags(state, tags) {
-        state.tags = tags;
+        state.tags.add(tags);
       }
     },
     actions: {
