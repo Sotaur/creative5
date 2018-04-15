@@ -49,13 +49,15 @@ export default new Vuex.Store({
             context.commit('setTags', response.data.tags);
           }).catch(err => console.log('Failed to get tags', err));
       },
-      login: function(context, username, password) {
-        axios.post('/api/login', {
-          username,
-          password
-        }).then(response => {
+      login: function(context, data) {
+        axios.post('/api/login', data).then(response => {
           context.commit('setUser', response.data.user);
         }).catch(err => console.log('Failed to login', err));
+      },
+      register: function (context, data) {
+        axios.post('/api/user', data).then(response => {
+          context.commit('setUser', response.data.user);
+        }).catch(err => console.log('Failed to register', err));
       }
 
     },
