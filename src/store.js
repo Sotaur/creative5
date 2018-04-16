@@ -51,7 +51,9 @@ export default new Vuex.Store({
       },
       login: function(context, data) {
         axios.post('/api/login', data).then(response => {
-          context.commit('setUser', response.data.user);
+          if (!response.data.user.error) {
+            context.commit('setUser', response.data.user);
+          }
         }).catch(err => console.log('Failed to login', err));
       },
       register: function (context, data) {
