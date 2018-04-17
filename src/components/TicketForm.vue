@@ -16,8 +16,8 @@
         <option v-for="tag in tags" value="tag">{{tag}}</option>
       </select>
       <textarea v-model="description" placeholder="Problem"></textarea>
+      <button class="btn light-green accent-4" type="button" v-on:click.prevent.self.exact.stop="addTicket()">Submit</button>
     </form>
-    <button type="button" v-on:click.prevent.self.exact.stop="addTicket()">Submit</button>
   </div>
 </template>
 
@@ -30,46 +30,35 @@
         description: '',
         priority: '',
         tag: '',
-        readyToSubmit: false
       }
     },
     methods: {
-      addTicket: function() {
+      addTicket: function () {
         console.log('Attempting to add ticket...');
         if (!this.notAllFields) {
-
-          this.readyToSubmit = true;
-
-        }
-      },
-    },
-    watch: {
-      readyToSubmit: function () {
-        if (this.readyToSubmit) {
           this.$store.dispatch('addTicket', {
             name: this.name,
             priority: this.priority,
             description: this.description,
-            userID: this.userID,
+            email: this.email,
             tags: this.tag
           });
           this.name = '';
           this.description = '';
           this.priority = '';
           this.tag = '';
-          this.readyToSubmit = false;
         }
-      }
+      },
     },
     computed: {
-      userID: function () {
-        return this.$store.getters.user.id;
+      email: function () {
+        return this.$store.getters.user.email;
       },
       tags: function () {
         return this.$store.getters.tags;
       },
       notAllFields: function () {
-        return !(this.name && this.description && this.priority && this.userID && this.tag);
+        return !(this.name && this.description && this.priority && this.email && this.tag);
       }
     }
   }
@@ -80,6 +69,12 @@
   form {
     width: 70%;
     max-width: 500px;
+    margin: auto;
+  }
+
+  select {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
 </style>

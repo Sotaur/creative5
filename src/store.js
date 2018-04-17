@@ -56,6 +56,16 @@ export default new Vuex.Store({
           return true;
         }).catch(err => {});
       },
+      resolveTicket: function(context, ticket) {
+        console.log(ticket);
+        axios.put("/api/tickets/" + ticket.id, {
+          ...ticket,
+          resolved: ticket.resolved ? '' : 'true'
+        } ).then(response => {
+          context.dispatch('getTickets');
+          return true;
+        }).catch(err => {});
+      },
       login: function(context, data) {
         axios.post('/api/login', data).then(response => {
           if (!response.data.error) {

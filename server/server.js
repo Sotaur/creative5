@@ -28,13 +28,24 @@ app.post('/api/tickets', (req, res) => {
         priority: req.body.priority,
         created_at: new Date(),
         tags: req.body.tags,
-        userID: req.body.email,
+        email: req.body.email,
+        resolved: ''
     }).then(ticket => {
         res.status(200).json(ticket);
     }).catch(error => {
         console.log(error);
         res.status(500).json({ error });
     });
+});
+
+app.put('/api/tickets/:id', (req, res) => {
+  let id = parseInt(req.params.id);
+  db('tickets').where('id', id).update({resolved: req.body.resolved}).then(ticket => {
+    res.sendStatus(200);
+  }).catch(err => {
+    console.log(err);
+    res.sendStatus(500).json({err});
+  })
 });
 
 app.delete('/api/tickets/:id', (req, res) => {

@@ -1,15 +1,21 @@
 <template>
   <div class="ticket">
-    <div class="problem">
-      <p>Problem: {{this.ticket.problem}}</p>
-      <p>Priority: {{this.ticket.priority | priorityName }}</p>
-      <p>Reported by: {{this.ticket.name}}</p>
-      <p>Reported on: {{this.ticket | dateFormat }}</p>
+    <div class="problem card">
+      <div class="card-title" >{{this.ticket.name}}</div>
+      <div class="card-body">Problem: {{this.ticket.problem}}</div>
+      <div class="">Priority: {{this.ticket.priority | priorityName }}</div>
+      <div class="">Reported by: {{this.ticket.email}}</div>
+      <div class="">Reported on: {{this.ticket | dateFormat }}</div>
+      <div class="">Tags: {{this.ticket.tags}}</div>
+      <div class="card-action">
+        <button v-on:click.prevent="resolveTicket()" class="white-text light-green accent-4 btn-small">
+          {{this.ticket.resolved ? 'Unresolve' : 'Resolve'}}
+        </button>
+        <button v-on:click.prevent="deleteTicket()" class="white-text btn-small light-green accent-4">Delete</button>
+      </div>
+
     </div>
-    <div class="delete">
-      <button type="button" v-on:click.prevent="deleteTicket()" class="delete">Delete</button>
-    </div>
-  </div>
+      </div>
 </template>
 
 <script>
@@ -19,7 +25,10 @@
       methods: {
           deleteTicket: function () {
              this.$store.dispatch('deleteTicket', this.ticket);
-          }
+          },
+        resolveTicket: function () {
+          this.$store.dispatch('resolveTicket', this.ticket);
+        }
       },
       filters: {
         dateFormat: function(ticket) {

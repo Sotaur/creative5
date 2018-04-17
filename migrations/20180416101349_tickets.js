@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.table('tickets', function(table) {
-      table.integer('userID');
+      table.integer('email');
     }),
   ]);
 };
@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.table('tickets', function(table) {
-      table.dropColumn('userID');
+      table.dropColumn('email');
     }),
   ]);
 };

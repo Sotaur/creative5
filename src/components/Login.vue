@@ -7,8 +7,8 @@
     <label for="confirmPassword" id="passConfLabel">Confirm Password</label>
     <input name="confirmPassword" id="confirmPassword" v-model="confirmPassword" type="password"/>
 
-    <button type="button" id="login" v-on:click.prevent="login()">Login</button>
-    <button type="button" id="register" v-on:click.prevent="register()">Register</button>
+    <button type="button" class="btn light-green accent-4" id="login" v-on:click.prevent="login()">Login</button>
+    <button type="button" class="btn light-green accent-4" id="register" v-on:click.prevent="register()">Register</button>
   </form>
 </template>
 
