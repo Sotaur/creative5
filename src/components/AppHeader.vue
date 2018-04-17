@@ -16,6 +16,10 @@
 <style>
   /*Strip the ul of padding and list styling*/
 
+  header {
+    width: 100%;
+  }
+
   nav {
     display: grid;
     margin-top: 0;
@@ -23,6 +27,7 @@
 
   #banner {
     max-height: 300px;
+    width: 100%;
   }
 
   ul {

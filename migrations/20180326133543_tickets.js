@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('tickets', function(table) {
             table.increments('id').primary();
             table.string('name');
-            table.text('problem');
+            table.text('description');
             table.date('created_at');
         }),
     ]);

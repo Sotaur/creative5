@@ -1,14 +1,14 @@
 <template>
   <form>
     <label for="email" id="emailLabel">Email</label>
-    <input name="email" id="email" :email="this.email" type="email"/>
+    <input name="email" id="email" v-model="email" type="email"/>
     <label for="password" id="passLabel">Password</label>
-    <input name="password" id="password" :password="this.password" type="password"/>
+    <input name="password" id="password" v-model="password" type="password"/>
     <label for="confirmPassword" id="passConfLabel">Confirm Password</label>
-    <input name="confirmPassword" id="confirmPassword" :confirmPassword="this.confirmPassword" type="password"/>
+    <input name="confirmPassword" id="confirmPassword" v-model="confirmPassword" type="password"/>
 
-    <button type="submit" id="login" name="Login" v-on:submit.prevent="this.login()">Login</button>
-    <button type="submit" id="register" name="Register" v-on:submit.prevent="this.register()">Register</button>
+    <button type="button" id="login" v-on:click.prevent="login()">Login</button>
+    <button type="button" id="register" v-on:click.prevent="register()">Register</button>
   </form>
 </template>
 
@@ -54,6 +54,8 @@
     display: grid;
     max-width: 50%;
     margin: auto;
+    height: 100%;
+    text-align: right;
   }
 
   button {
