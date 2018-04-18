@@ -13,7 +13,7 @@
 </script>
 
 <style scoped>
- div {
+ p {
    max-width: 50%;
    margin: auto;
  }
