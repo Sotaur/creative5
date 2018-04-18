@@ -4,7 +4,7 @@
     <div id="filters">
       <button type="button" id="resolved" class="btn light-green accent-4" @click="showResolved">Resolved</button>
       <button type="button" id="unresolved" class="btn light-green accent-4" @click="showUnresolved">Unresolved</button>
-      <button type="button" id="all" class="btn light-green accent-4" @click="showAll">Show All</button>
+      <button type="button" id="all" class="btn light-green accent-4" @click="showAll">All</button>
     </div>
     <div id="scroll">
       <ticket v-for="ticket in filteredTickets" :key="ticket.name + ticket.problem" :ticket="ticket" />
