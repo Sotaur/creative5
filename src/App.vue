@@ -2,6 +2,7 @@
   <div id="body">
     <app-header />
     <div id="if" v-if="!this.$store.getters.user.email">
+      <about />
       <login />
     </div>
     <div id="else" v-else>
@@ -19,11 +20,13 @@
   import Login from './components/Login';
   import Tickets from './components/Tickets';
   import AppHeader from "./components/AppHeader";
+  import About from './components/About'
     export default {
         components: {
           AppHeader,
           Login,
-          Tickets
+          Tickets,
+          About
         }
     }
 </script>
