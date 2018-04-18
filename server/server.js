@@ -48,9 +48,10 @@ app.put('/api/tickets/:id', (req, res) => {
   })
 });
 
-app.delete('/api/tickets/:id', (req, res) => {
+app.delete('/api/tickets/:id/:email', (req, res) => {
     let id = parseInt(req.params.id);
-    db('tickets').where('id', id).del().then(tickets => {
+    let email = req.params.email;
+    db('tickets').where({id: id, email: email}).del().then(tickets => {
         res.sendStatus(200);
     }).catch(error => {
         console.log(error);

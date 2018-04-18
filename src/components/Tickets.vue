@@ -1,5 +1,9 @@
 <template>
   <div id="tickets">
+    <p>
+    We may contact you about any ticket(s) you submit.
+    You can resolve any ticket, but you can only delete ones you submitted.
+    </p>
     <ticket-form/>
     <div id="filters">
       <button type="button" id="resolved" class="btn light-green accent-4" @click="showResolved">Resolved</button>

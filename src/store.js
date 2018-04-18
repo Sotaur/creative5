@@ -51,7 +51,10 @@ export default new Vuex.Store({
       // },
       deleteTicket: function(context, ticket) {
         console.log(ticket);
-        axios.delete("/api/tickets/" + ticket.id).then(response => {
+        axios.request({
+          url: "/api/tickets/" + ticket.id + '/' + this.state.user.email,
+          method: 'delete',
+        }).then(response => {
           context.dispatch('getTickets');
           return true;
         }).catch(err => {});
